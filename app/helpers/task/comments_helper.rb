@@ -1,0 +1,2 @@
+module Task::CommentsHelper
+end

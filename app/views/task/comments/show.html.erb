@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @task_comment.body %>
+</p>
+
+<%= link_to 'Edit', edit_task_comment_path(@task_comment) class: "btn btn-light"%> |
+<%= link_to 'Back', project_task_path(@project, @task.id), class: "btn btn-light" %>

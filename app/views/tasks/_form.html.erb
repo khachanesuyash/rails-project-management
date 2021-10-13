@@ -1,0 +1,72 @@
+<%= form_with(model: [@task.project, @task]) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <form class="row g-3">
+    <div class="container">
+      <div class="col-md-4">
+        <%= f.label :title , class: "form-label" %><br />
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :description , class: "form-label" %><br />
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :start_date , class: "form-label" %><br />
+        <%= f.date_field :start_date, class: "form-control" %>
+        <%= f.label :end_date, class: "form-label"%><br />
+        <%= f.date_field :end_date, class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        
+      </div>
+      <div class="col-md-2">
+        <%= f.label :story_point  , class: "form-label"%><br />
+        <%= f.text_field :story_point, class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :priority  , class: "form-label"%><br />
+        <%= f.select :priority, Task::PRIORITY_OPTIONS, {}, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :due_date , class: "form-label" %><br />
+        <%= f.date_select :due_date, class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :status , class: "form-label" %><br />
+        <%= f.select :status, Task::STATUS_OPTIONS, {}, class: "form-control"%>
+      </div>
+      <div class="col-md-2">
+        <%= f.label :task_type , class: "form-label" %><br />
+        <%= f.text_field :task_type, class: "form-control", value: "Task" %>
+      </div>
+
+      
+      
+      <div class="col-md-2">
+        <%= f.label :phase_id , class: "form-label" %><br />
+        <%= f.select :phase_id, Task::PHASE_OPTIONS, {}, class: "form-control"%>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :featured_image%>
+        <%= f.file_field :featured_image, multiple: true, class: "form-control"%>
+      </div>
+      <br>
+      <div class="col-12">
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </div>
+<% end %>

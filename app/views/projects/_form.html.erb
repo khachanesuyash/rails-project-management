@@ -1,0 +1,45 @@
+<%= form_with(model: project) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form class="row g-3">
+    <div class="container">
+      <div class="col-md-4">
+        <%= form.label :title , class: "form-label"%><br>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :description , class: "form-label"%><br>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= form.label :status, class: "form-label"%><br>
+        <%= form.select :status, Project::STATUS_OPTIONS, {}, class: "form-control"%>
+      </div>
+      <div class="col-md-2">
+        <%= form.label :due_date , class: "form-label"%><br>
+        <%= form.date_field :due_date, class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= form.label :phase, class: "form-label" %><br>
+        <%= form.select :phase, Project::PHASE_OPTIONS, {}, class: "form-control"%>
+      </div>
+      <br>
+      <div class="col-12">
+        <div class="actions"> 
+          <%= form.submit %>
+        </div>
+      </div>
+    </div>
+  </form>
+
+<% end %>

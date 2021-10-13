@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<% if user_signed_in? %>
+  <% if @projects.any? %>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title d-flex justify-content-between mb-4">
+          <span>Projects</span>
+          <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
+        </h2>
+        <% @projects.each do |project| %>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title"><%= link_to project.title, project %></h5>
+              <h5><%= project.description %></h5>
+            </div>
+          </div><br>       
+        <% end %>
+    </div>
+
+  
+  <% else %>
+    <h5> No projects created. Create one now <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
+  <% end %>
+
+<% else %>
+  <h1> Log In first to view the projects</h1>
+<% end %>
+

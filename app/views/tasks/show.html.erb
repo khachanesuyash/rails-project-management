@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+
+<% if @task.featured_image.attached? %>
+  <% @task.featured_image.each do |image| %>
+    <%= image_tag(image, :class => "featured_image") %>
+  <%end%>
+<% end %>
+
+<p>
+  <b>Title:</b>
+  <%= @task.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @task.description %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @task.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @task.end_date %>
+</p>
+
+<p>
+  <b>Story point:</b>
+  <%= @task.story_point %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= @task.priority %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%= @task.due_date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @task.status %>
+</p>
+
+<p>
+  <b>Task type:</b>
+  <%= @task.task_type %>
+</p>
+
+<p>
+  <b>Phase</b>
+  <%= @task.phase_id %>
+</p>
+
+<b> Subtasks: </b>
+<% if @subtask.persisted? %>
+<p>
+  <b>Title:</b>
+  <%= @subtask.title %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @subtask.status %>
+</p>
+<%else%>
+<p>No Sub tasks</p>
+<%end%>
+
+<%= link_to 'Add Sub task', new_task_subtask_path(@task), class: "btn btn-primary"%><br><br>
+
+
+<%= link_to 'Add a comment', new_task_comment_path , class: "btn btn-primary"%><br>
+<br><br>
+<%= link_to 'Edit', edit_project_task_path(@task.project, @task), class: "btn btn-light" %> |
+<%= link_to 'Back', @project, class: "btn btn-light" %> | 
+<%= link_to 'Delete Task', project_task_path(@task.project, @task), method: :delete,data: { confirm: 'Are you sure?' }, class: "btn btn-light"%>

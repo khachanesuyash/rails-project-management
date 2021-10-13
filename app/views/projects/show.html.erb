@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', projects_path, class: "btn btn-primary"%>
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'>
+      <span><%= @project.title %></span>
+      <div>
+        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-light' %>
+        <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
+      </div>
+    </h2>
+
+    <p>Description: <%= @project.description %></p>
+    <p>Status: <%= @project.status %></p>
+    <p>Due date: <%= @project.due_date %></p>
+    <p>Phase: <%= @project.phase %></p>
+
+    <hr>
+    <h1 class="card-title d-flex justify-content-between mb-4">
+      <span>Tasks</span>
+      <%= link_to 'New Task', new_project_task_path(@project.id), class: "btn btn-primary" %>
+    </h1>
+
+     
+    <div class="row" >
+      <% Phase.all.each do |phase| %>
+      <div class="col-md-4">
+        <div id="<%= phase.title %>">
+          <span>
+
+            <%= phase.title %><br>
+              <% task = @project.tasks %>
+              <ul id="tasks-list">
+                <% task.all.where(phase_id: phase.id).each do |item| %>
+                  <li>
+                    <div class="my-card">
+                      <%= link_to item.title, project_task_path(@project, item.id) %><br>
+                      <%= item.description %><br>
+                      <%= item.status %>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+          </span>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+

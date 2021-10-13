@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  start_date: 2021-10-10
+  end_date: 2021-10-10
+  story_point: 9.99
+  priority: MyString
+  due_date: 2021-10-10
+  status: MyString
+  task_type: MyString
+  project: one
+  user: one
+  phase: one
+
+two:
+  title: MyString
+  description: MyText
+  start_date: 2021-10-10
+  end_date: 2021-10-10
+  story_point: 9.99
+  priority: MyString
+  due_date: 2021-10-10
+  status: MyString
+  task_type: MyString
+  project: two
+  user: two
+  phase: two

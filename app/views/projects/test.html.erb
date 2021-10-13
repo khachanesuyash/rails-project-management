@@ -1,0 +1,54 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link href="style.css" rel="stylesheet">
+<div class="main-container">
+    <ul class="columns">
+
+      <li class="column to-do-column">
+        <div class="column-header">
+          <span class="badge bg-secondary">To-Do</h4>
+        </div>
+        <ul class="task-list" id="to-do">
+          <%= @project.tasks.each do |task|  %>
+            <% if task.persisted? %>
+              <li class="card-task">
+                <p><%= link_to task.title, [task.project, task] %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+  
+      <li class="column doing-column">
+        <div class="column-header">
+          <span class="badge bg-info">In Progress</h4>
+        </div>
+        <ul class="task-list" id="inprogress">
+          <%= @project.tasks.each do |task|  %>
+            <% if task.persisted? %>
+              <li class="card-task">
+                <p><%= link_to task.title, [task.project, task] %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+  
+      <li class="column done-column">
+        <div class="column-header">
+          <span class="badge bg-success">Completed</h4>
+        </div>
+        <ul class="task-list" id="completed">
+          <%= @project.tasks.each do |task|  %>
+            <% if task.persisted? %>
+              <li class="card-task">
+                <p><%= link_to task.title, [task.project, task] %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  
